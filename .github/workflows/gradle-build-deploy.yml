@@ -1,0 +1,20 @@
+name: gradle build and deploy jar file to aws lambda 
+
+on:
+  push:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # build fat Jar
+      - name: gradlew build
+        run: ./gradlew build
